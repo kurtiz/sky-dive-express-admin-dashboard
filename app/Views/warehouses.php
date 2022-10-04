@@ -5,158 +5,209 @@
 <html lang="en" data-theme="light">
 <?= $this->include("widgets/head"); ?>
 <body>
-<link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/datatables/css/buttons.dataTables.min.css">
-<link rel="stylesheet" href="<?= base_url(); ?>/public/dist/css/theme.min.css">
-<link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/jquery-toast-plugin/dist/jquery.toast.min.css">
-<link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/sweetalerts2/dist/sweetalert2.css">
-<link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/datatables/css/responsive.bootstrap.css">
-<link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/datatables/css/responsive.dataTables.css">
+<!-- page css  -->
+<link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendor/libs/apex-charts/apex-charts.css"/>
+<link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendor/css/pages/card-analytics.css"/>
+<!-- page css -->
 
-<?= $this->include("widgets/svg"); ?>
-<div class="page-wrapper">
-    <?= $this->include("widgets/topbar"); ?>
-    <?= $this->include("widgets/sidebar"); ?>
-    <main class="page-content">
-        <div class="container">
-            <div class="page-header">
-                <h1 class="page-header__title">Warehouse</h1>
-            </div>
-            <div class="page-tools">
-                <div class="page-tools__breadcrumbs">
-                    <div class="breadcrumbs">
-                        <div class="breadcrumbs__container">
-                            <ol class="breadcrumbs__list">
-                                <li class="breadcrumbs__item">
-                                    <a class="breadcrumbs__link" href="<?= base_url() ?>/dashboard">
-                                        <svg class="icon-icon-home breadcrumbs__icon">
-                                            <use xlink:href="#icon-home"></use>
-                                        </svg>
-                                        <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
-                                            <use xlink:href="#icon-keyboard-right"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Warehouses</span>
-                                </li>
-                            </ol>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar  ">
+    <div class="layout-container">
+
+        <!-- Menu -->
+        <?= $this->include("widgets/sidebar") ?>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+            <!-- Navbar -->
+            <?= $this->include("widgets/topbar") ?>
+            <!-- / Navbar -->
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Warehouse</span></h4>
+                    <div class="row">
+                        <!-- DataTable with Buttons -->
+                        <div class="card p-2">
+                            <div class="card-datatable table-responsive">
+                                <table id="warehouse_table" class="table border-top">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Branch</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>New York</td>
+                                        <td>ny@dom.com</td>
+                                        <td>1584876524</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <a href="javascript:edit()"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Edit"
+                                                            class="fas fa-edit text-green"></i></a>
+                                                <a href="javascript:void(0)"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="View" onclick=""
+                                                            class="fas fa-eye text-blue"></i></a>
+                                                <a href="javascript:sendPrint()"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Print"
+                                                            class="fa fa-print text-yellow"></i></a>
+                                                <!--                                                --><?php //if (isset($user_role_permissions)):?>
+                                                <!--                                                    --><?php //if ($user_role_permissions[2]['state'] == "true"):?>
+                                                <a href="javascript:delete_sale()">
+                                                    <? //= $row['sales_id'] ?><!--)">-->
+                                                    <i data-toggle="tooltip" data-placement="top" title="Delete"
+                                                       class="fas fa-trash text-red"></i></a>
+                                                <!--                                                    --><?php //endif; ?>
+                                                <!--                                                --><?php //endif; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>New Orleans</td>
+                                        <td>no@dom.com</td>
+                                        <td>1985876524</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <a href="javascript:edit()"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Edit"
+                                                            class="fas fa-edit text-green"></i></a>
+                                                <a href="javascript:void(0)"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="View" onclick=""
+                                                            class="fas fa-eye text-blue"></i></a>
+                                                <a href="javascript:sendPrint()"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Print"
+                                                            class="fa fa-print text-yellow"></i></a>
+                                                <!--                                                --><?php //if (isset($user_role_permissions)):?>
+                                                <!--                                                    --><?php //if ($user_role_permissions[2]['state'] == "true"):?>
+                                                <a href="javascript:delete_sale()">
+                                                    <? //= $row['sales_id'] ?><!--)">-->
+                                                    <i data-toggle="tooltip" data-placement="top" title="Delete"
+                                                       class="fas fa-trash text-red"></i></a>
+                                                <!--                                                    --><?php //endif; ?>
+                                                <!--                                                --><?php //endif; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Texas</td>
+                                        <td>tx@dom.com</td>
+                                        <td>1525234234</td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <a href="javascript:edit()"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Edit"
+                                                            class="fas fa-edit text-green"></i></a>
+                                                <a href="javascript:void(0)"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="View" onclick=""
+                                                            class="fas fa-eye text-blue"></i></a>
+                                                <a href="javascript:sendPrint()"><i
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Print"
+                                                            class="fa fa-print text-yellow"></i></a>
+                                                <!--                                                --><?php //if (isset($user_role_permissions)):?>
+                                                <!--                                                    --><?php //if ($user_role_permissions[2]['state'] == "true"):?>
+                                                <a href="javascript:delete_sale()">
+                                                    <? //= $row['sales_id'] ?><!--)">-->
+                                                    <i data-toggle="tooltip" data-placement="top" title="Delete"
+                                                       class="fas fa-trash text-red"></i></a>
+                                                <!--                                                    --><?php //endif; ?>
+                                                <!--                                                --><?php //endif; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
+                    <!--/ DataTable with Buttons -->
                 </div>
+                <!-- / Content -->
+
+                <!-- Footer -->
+                <?= $this->include("widgets/footer") ?>
+                <!-- / Footer -->
+                <div class="content-backdrop fade"></div>
             </div>
-            <div class="card">
-                <div class="card__wrapper">
-                    <div class="card__container">
-                    <div class="table-responsive">
-                        <table id="sales_data_table" class="sales_table cell-border table-hover nowrap table">
-                            <thead>
-                            <tr>
-                                <th>Branch</th>
-                                <th>Email</th>
-                                <th>Contact</th>
-                                <th class="nosort">&nbsp</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 2px" border="1">
-                                <td id="">Franky Plaza</td>
-                                <td><a href="mailto:franky@plaza.com" style="color: #0f38ff">franky@plaza.com</a></td>
-                                <td>
-                                    <a href="tel:1856984587" style="color: #0f38ff">+1856984587</a>
-                                </td>
-                                <td>
-                                    <div class="table-actions">
-                                        <a href="javascript:edit()"><i
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="Edit"
-                                                    class="fas fa-edit text-green"></i></a>
-                                        <a href="javascript:void(0)"><i
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="View" onclick=""
-                                                    class="fas fa-eye text-blue"></i></a>
-                                        <a href="javascript:sendPrint()"><i
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="Print"
-                                                    class="fa fa-print text-yellow"></i></a>
-                                        <!--                                                --><?php //if (isset($user_role_permissions)):?>
-                                        <!--                                                    --><?php //if ($user_role_permissions[2]['state'] == "true"):?>
-                                                                                                <a href="javascript:delete_sale()">
-                                        <? //= $row['sales_id'] ?><!--)">-->
-                                        <i data-toggle="tooltip" data-placement="top" title="Delete"
-                                           class="fas fa-trash text-red"></i></a>
-                                        <!--                                                    --><?php //endif; ?>
-                                        <!--                                                --><?php //endif; ?>
-                                    </div>
-                                </td>
-                            </tr>
-                                <tr border="1">
-                                    <td id="">Bens Warehouse</td>
-                                    <td><a href="mailto:franky@plaza.com" style="color: #0f38ff">bens@plaza.com</a></td>
-                                    <td>
-                                        <a href="tel:1856984587" style="color: #0f38ff">+1850384587</a>
-                                    </td>
-                                    <td>
-                                        <div class="table-actions">
-                                            <a href="javascript:edit()"><i
-                                                        data-toggle="tooltip" data-placement="top"
-                                                        title="Edit"
-                                                        class="fas fa-edit text-green"></i></a>
-                                            <a href="javascript:void(0)"><i
-                                                        data-toggle="tooltip" data-placement="top"
-                                                        title="View" onclick=""
-                                                        class="fas fa-eye text-blue"></i></a>
-                                            <a href="javascript:sendPrint()"><i
-                                                        data-toggle="tooltip" data-placement="top"
-                                                        title="Print"
-                                                        class="fa fa-print text-yellow"></i></a>
-                                            <!--                                                --><?php //if (isset($user_role_permissions)):?>
-                                            <!--                                                    --><?php //if ($user_role_permissions[2]['state'] == "true"):?>
-                                            <a href="javascript:delete_sale()">
-                                                <? //= $row['sales_id'] ?><!--)">-->
-                                                <i data-toggle="tooltip" data-placement="top" title="Delete"
-                                                   class="fas fa-trash text-red"></i></a>
-                                            <!--                                                    --><?php //endif; ?>
-                                            <!--                                                --><?php //endif; ?>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Content wrapper -->
         </div>
-    </main>
+        <!-- / Layout page -->
+    </div>
+
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+
+
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
+
 </div>
+<!-- / Layout wrapper -->
 
-<script src="<?= base_url() ?>/public/js/gsap/gsap.min.js"></script>
-<script src="<?= base_url() ?>/public/js/gsap/ScrollToPlugin.min.js"></script>
-<script src="<?= base_url() ?>/public/js/gsap/ScrollTrigger.min.js"></script>
-<script src="<?= base_url() ?>/public/js/vendor.min.js"></script>
-<script src="<?= base_url() ?>/public/js/common.js"></script>
 
-<script src="<?= base_url(); ?>/public/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url(); ?>/public/js/datatables.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/dataTables.buttons.min.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/buttons.flash.min.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/jszip.min.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/pdfmake.min.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/vfs_fonts.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/buttons.html5.min.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/responsive.bootstrap.js"></script>
-<script src="<?= base_url(); ?>/public/plugins/datatables/js/responsive.dataTables.js"></script>
-<link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/datatables/css/buttons.dataTables.min.css">
-<script src="<?= base_url(); ?>/public/js/print.js"></script>
-<script src="<?= base_url() ?>/public/plugins/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
-        integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="<?= base_url() ?>/public/assets/vendor/libs/jquery/jquery.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/popper/popper.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/js/bootstrap.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
+<script src="<?= base_url() ?>/public/assets/vendor/libs/hammer/hammer.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+
+<script src="<?= base_url() ?>/public/assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-buttons/datatables-buttons.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/jszip/jszip.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/pdfmake/pdfmake.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-buttons/buttons.html5.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-buttons/buttons.print.js"></script>
+<!-- Flat Picker -->
+<script src="<?= base_url() ?>/public/assets/vendor/libs/moment/moment.js"></script>
+<!-- Row Group JS -->
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-rowgroup/datatables.rowgroup.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.js"></script>
+<!-- Form Validation -->
+<script src="<?= base_url() ?>/public/assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
+
+<!-- Main JS -->
+<script src="<?= base_url() ?>/public/assets/js/main.js"></script>
+
+<!-- Page JS -->
+<!--<script src="--><?// //=base_url()?><!--/public/assets/js/tables-datatables-basic.js"></script>-->
 <script>
-    let table = $('.sales_table').DataTable({
+    let table = $('#warehouse_table').DataTable({
         responsive: true,
         dom: 'Bflrtip',
         buttons: [
@@ -231,6 +282,8 @@
         $("#csv_btn").removeClass("dt-button buttons-excel buttons-html5");
         $("#pdf_btn").removeClass("dt-button buttons-excel buttons-html5");
         $("#print_btn").removeClass("dt-button buttons-excel buttons-html5");
+        $("#warehouse_table_filter").addClass("float-end");
+        $(".pagination").eq(0).addClass("float-end");
 
     });
 
@@ -363,6 +416,7 @@
     }
 
 </script>
+
 </body>
 </html>
 <?= $this->endSection(); ?>
