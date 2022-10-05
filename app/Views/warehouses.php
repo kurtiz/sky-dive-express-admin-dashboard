@@ -44,11 +44,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                    if (!empty($warehouses)):
+                                        foreach($warehouses as $rows):
+                                    ?>
                                     <tr>
                                         <td></td>
-                                        <td>New York</td>
-                                        <td>ny@dom.com</td>
-                                        <td>1584876524</td>
+                                        <td><?=$rows["warehouse_branch"]?></td>
+                                        <td><?=$rows["warehouse_email"]?></td>
+                                        <td><?=$rows["warehouse_mobile"]?></td>
                                         <td>
                                             <div class="table-actions">
                                                 <a href="javascript:edit()"><i
@@ -74,66 +78,10 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>New Orleans</td>
-                                        <td>no@dom.com</td>
-                                        <td>1985876524</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="javascript:edit()"><i
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="Edit"
-                                                            class="fas fa-edit text-green"></i></a>
-                                                <a href="javascript:void(0)"><i
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="View" onclick=""
-                                                            class="fas fa-eye text-blue"></i></a>
-                                                <a href="javascript:sendPrint()"><i
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="Print"
-                                                            class="fa fa-print text-yellow"></i></a>
-                                                <!--                                                --><?php //if (isset($user_role_permissions)):?>
-                                                <!--                                                    --><?php //if ($user_role_permissions[2]['state'] == "true"):?>
-                                                <a href="javascript:delete_sale()">
-                                                    <? //= $row['sales_id'] ?><!--)">-->
-                                                    <i data-toggle="tooltip" data-placement="top" title="Delete"
-                                                       class="fas fa-trash text-red"></i></a>
-                                                <!--                                                    --><?php //endif; ?>
-                                                <!--                                                --><?php //endif; ?>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Texas</td>
-                                        <td>tx@dom.com</td>
-                                        <td>1525234234</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a href="javascript:edit()"><i
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="Edit"
-                                                            class="fas fa-edit text-green"></i></a>
-                                                <a href="javascript:void(0)"><i
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="View" onclick=""
-                                                            class="fas fa-eye text-blue"></i></a>
-                                                <a href="javascript:sendPrint()"><i
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="Print"
-                                                            class="fa fa-print text-yellow"></i></a>
-                                                <!--                                                --><?php //if (isset($user_role_permissions)):?>
-                                                <!--                                                    --><?php //if ($user_role_permissions[2]['state'] == "true"):?>
-                                                <a href="javascript:delete_sale()">
-                                                    <? //= $row['sales_id'] ?><!--)">-->
-                                                    <i data-toggle="tooltip" data-placement="top" title="Delete"
-                                                       class="fas fa-trash text-red"></i></a>
-                                                <!--                                                    --><?php //endif; ?>
-                                                <!--                                                --><?php //endif; ?>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    endforeach;
+                                    endif;
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>

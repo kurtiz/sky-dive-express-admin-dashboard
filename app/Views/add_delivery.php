@@ -7,11 +7,14 @@
 <body>
 <!-- page css  -->
 
-<link rel="stylesheet" href="<?=base_url()?>/public/assets/vendor/libs/flatpickr/flatpickr.css" />
-<link rel="stylesheet" href="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.css" />
-<link rel="stylesheet" href=".<?=base_url()?>/public/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" />
+<link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendor/libs/flatpickr/flatpickr.css"/>
+<link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendor/libs/jquery-timepicker/jquery-timepicker.css"/>
+<link rel="stylesheet"
+      href="<?= base_url() ?>/public/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css"/>
+<link rel="stylesheet" href="<?= base_url() ?>/public/assets/css/airbnb.css"/>
 <!-- Row Group CSS -->
-<link rel="stylesheet" href="<?=base_url()?>/public/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css">
+<link rel="stylesheet"
+      href="<?= base_url() ?>/public/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css">
 <!-- page css -->
 
 <!-- Layout wrapper -->
@@ -19,13 +22,13 @@
     <div class="layout-container">
 
         <!-- Menu -->
-        <?=$this->include("widgets/sidebar")?>
+        <?= $this->include("widgets/sidebar") ?>
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
             <!-- Navbar -->
-            <?= $this->include("widgets/topbar")?>
+            <?= $this->include("widgets/topbar") ?>
             <!-- / Navbar -->
 
             <!-- Content wrapper -->
@@ -40,12 +43,15 @@
                             <div class="row g-3 mb-2">
                                 <div class="col-md-4">
                                     <label class="form-label" for="multicol-username">Package Code</label>
-                                    <input type="text" id="multicol-username" class="form-control" placeholder="john.doe" />
+                                    <input type="text" id="multicol-username" class="form-control"
+                                           placeholder="john.doe"/>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label" for="multicol-email">Destination</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" id="multicol-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="multicol-email2" />
+                                        <input type="text" id="multicol-email" class="form-control"
+                                               placeholder="john.doe" aria-label="john.doe"
+                                               aria-describedby="multicol-email2"/>
                                     </div>
                                 </div>
                             </div>
@@ -53,19 +59,23 @@
                                 <div class="col-md-12">
                                     <label class="form-label" for="multicol-phone">Transits</label>
                                 </div>
-                                <div class="col-md-12">
-                                    <label class="form-label" for="multicol-first-name">Head</label>
-                                    <input type="text" id="multicol-first-name" class="form-control" placeholder="Packaged" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="multicol-first-name">Location</label>
-                                    <input type="text" id="multicol-first-name" class="form-control" placeholder="New Orleans" />
-                                </div>
-                                <!-- Datetime Picker-->
-                                <div class="col-md-6 col-12 mb-2">
-                                    <label for="flatpick-datetime" class="form-label">Datetime Picker</label>
-                                    <input type="text" class="form-control flatpickr-datetime"
-                                           placeholder="YYYY-MM-DD HH:MM AM" id="flatpick-datetime" />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="form-label" for="multicol-first-name">Head</label>
+                                        <input type="text" id="multicol-first-name" class="form-control"
+                                               placeholder="Packaged"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="multicol-first-name">Location</label>
+                                        <input type="text" id="multicol-first-name" class="form-control"
+                                               placeholder="New Orleans"/>
+                                    </div>
+                                    <!-- Datetime Picker-->
+                                    <div class="col-md-6 col-12 mb-2">
+                                        <label for="flatpick-datetime" class="form-label">Date and Time</label>
+                                        <input type="text" class="form-control flatpickr-datetime"
+                                               placeholder="DD-MM-YYYY HH:MM AM" id="flatpick-datetime"/>
+                                    </div>
                                 </div>
                             </div>
                             <div class="pt-4 row">
@@ -74,7 +84,8 @@
                                     <button type="reset" class="btn btn-label-secondary">Cancel</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" id="newTransit" class="btn rounded-pill btn-icon btn-warning float-end">
+                                    <button type="button" id="newTransit"
+                                            class="btn rounded-pill btn-icon btn-warning float-end">
                                         <i class="bx bx-plus"></i>
                                     </button>
                                 </div>
@@ -86,7 +97,7 @@
                 <!-- / Content -->
 
                 <!-- Footer -->
-                <?=$this->include("widgets/footer")?>
+                <?= $this->include("widgets/footer") ?>
                 <!-- / Footer -->
                 <div class="content-backdrop fade"></div>
             </div>
@@ -94,7 +105,6 @@
         </div>
         <!-- / Layout page -->
     </div>
-
 
 
     <!-- Overlay -->
@@ -106,59 +116,80 @@
 
 </div>
 <!-- / Layout wrapper -->
-
+<input id="counter" hidden readonly type="text" value="1"/>
 
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
-<script src="<?=base_url()?>/public/assets/vendor/libs/jquery/jquery.js"></script>
-<script src="<?=base_url()?>/public/assets/vendor/libs/popper/popper.js"></script>
-<script src="<?=base_url()?>/public/assets/vendor/js/bootstrap.js"></script>
-<script src="<?=base_url()?>/public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/jquery/jquery.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/popper/popper.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/js/bootstrap.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-<script src="<?=base_url()?>/public/assets/vendor/libs/hammer/hammer.js"></script>
-<script src="<?=base_url()?>/public/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/hammer/hammer.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/typeahead-js/typeahead.js"></script>
 
-<script src="<?=base_url()?>/public/assets/vendor/js/menu.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/js/menu.js"></script>
 <!-- endbuild -->
 
 <!-- Vendors JS -->
-<script src="<?=base_url()?>/public/assets/vendor/libs/moment/moment.js"></script>
-<script src="<?=base_url()?>/public/assets/vendor/libs/flatpickr/flatpickr.js"></script>
-<!--<script src="--><?//=base_url()?><!--/public/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>-->
-<script src="<?=base_url()?>/public/assets/vendor/libs/select2/select2.js"></script>
-<script src="<?=base_url()?>/public/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/moment/moment.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+<!--<script src="-->
+<? //=base_url()?><!--/public/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>-->
+<script src="<?= base_url() ?>/public/assets/vendor/libs/select2/select2.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
 
 <script src="<?= base_url() ?>/public/assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
 <script src="<?= base_url() ?>/public/assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
 <script src="<?= base_url() ?>/public/assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
 
 <!-- Main JS -->
-<script src="<?=base_url()?>/public/assets/js/main.js"></script>
+<script src="<?= base_url() ?>/public/assets/js/main.js"></script>
 
 <!-- Page JS -->
-<!--<script src="--><?//=base_url()?><!--/public/assets/js/form-layouts.js"></script>-->
+<!--<script src="--><? //=base_url()?><!--/public/assets/js/form-layouts.js"></script>-->
 <script>
-    $(".flatpickr-datetime").flatpickr({enableTime: true, dateFormat: "Y-m-d h:i K"});
+    let flatPickers = $(".flatpickr-datetime")
+    let counter = $("#counter")
 
+    flatPickers.flatpickr({enableTime: true, dateFormat: "d-m-Y h:i K"})
+    // flatPickers.destroy()
 
-    let newline = '<div class="col-md-12">' +
-        '<label class="form-label" for="multicol-first-name">Head</label>'+
-        '<input type="text" id="multicol-first-name" class="form-control" placeholder="Packaged" />'+
-    '</div>'+
-    '<div class="col-md-6">'+
-        '<label class="form-label" for="multicol-first-name">Location</label>'+
-        '<input type="text" id="multicol-first-name" class="form-control" placeholder="New Orleans" />'+
-    '</div>'+
-    '<!-- Datetime Picker-->'+
-    '<div class="col-md-6 col-12 mb-2">'+
-        '<label for="flatpick-datetime" class="form-label">Datetime Picker</label>'+
-        '<input type="text" class="form-control flatpickr-datetime" '+
-               'placeholder="YYYY-MM-DD HH:MM AM" id="flatpick-datetime" />'+
-    '</div>'+
-    '</div>'
+    let newline = '<div id="trans" style="display: none" class="row">' +
+        '<div class="col-md-12">' +
+        '<label class="form-label" for="multicol-first-name">Head</label>' +
+        '<input type="text" id="multicol-first-name" class="form-control" placeholder="Packaged" />' +
+        '</div>' +
+        '<div class="col-md-6">' +
+        '<label class="form-label" for="multicol-first-name">Location</label>' +
+        '<input type="text" id="multicol-first-name" class="form-control" placeholder="New Orleans" />' +
+        '</div>' +
+        '<div class="col-md-6 col-12 mb-2">' +
+        '<label for="flatpick-datetime" class="form-label">Date and Time</label>' +
+        '<input type="text" class="form-control flatpickr-datetime" ' +
+        'placeholder="DD-MM-YYYY HH:MM AM" id="flatpick-datetime" />' +
+        '</div>' +
+        '</div> </div>'
 
-    $("#newTransit").on("click", function(){
+    $("#newTransit").on("click", function () {
         $("#transit").append(newline)
+        let newElement = $("#trans")
+        let count = counter.val()
+        newElement.prop("id", `trans${count}`)
+        counter.val(parseInt(count) + 1)
+
+        flatPickers = $(".flatpickr-datetime")
+
+        $(`#trans${count}`).slideDown(
+            function (){
+                $(`#trans${count}`).show()
+            }
+        )
+        for (let i = 0; i < flatPickers.length; i++) {
+            flatPickers[i]._flatpickr.destroy()
+            flatPickers.flatpickr({enableTime: true, dateFormat: "d-m-Y h:i K"})
+        }
+
     })
 </script>
 </body>

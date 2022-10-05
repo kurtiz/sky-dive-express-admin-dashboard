@@ -20,7 +20,7 @@
     <ul class="menu-inner py-1">
         <!-- dashboard -->
         <li class="menu-item <?=session()->getTempdata("dashboard")?>">
-            <a href="javascript:void(0);" class="menu-link">
+            <a href="<?=base_url()?>/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div>Dashboard</div>
             </a>

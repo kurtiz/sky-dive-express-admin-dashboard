@@ -17,19 +17,19 @@ class Home extends BaseController
         $this->loginModel = new LoginModel();
     }
 
-    public function index(): string
-    {
-        session()->setTempdata("home", "active", 2);
+    public function index() {
+        session()->setTempdata("home", "active", 1);
         session()->set("page", "Home");
 
         if ($this->request->getMethod() == "post") {
+
             $clauses = [
                 "user_email" => $this->request->getVar("email", FILTER_SANITIZE_EMAIL),
                 "user_passkey" => $this->request->getVar("password", FILTER_SANITIZE_STRING),
             ];
 
             $salt = $this->loginModel->getSalt([
-                    "user_email" => $clauses['user_email']
+                "user_email" => $clauses['user_email']
             ]);
 
             if ($salt) {
@@ -40,10 +40,13 @@ class Home extends BaseController
                     false,
                     $salt->user_salt
                 )[1];
+
                 $authenticated = $this->loginModel->authenticateLogin($clauses);
 
                 if ($authenticated) {
                     session()->set("user", $authenticated);
+                    session()->setTempdata("login_success", $authenticated->user_name, 1);
+                    return redirect()->to(base_url()."/dashboard");
                 } else {
                     session()->setTempdata(
                         "login_error",
@@ -51,6 +54,12 @@ class Home extends BaseController
                         3
                     );
                 }
+            } else {
+                session()->setTempdata(
+                    "login_error",
+                    "Credentials do not match, Please try again!",
+                    3
+                );
             }
 
         }
@@ -58,16 +67,16 @@ class Home extends BaseController
         return view('home');
     }
 
-    public function test()
-    {
-        var_dump(
-            $this->passwordHasher->hashPasswordWithSalt(
-                "hello123",
-                "sha512",
-                false,
-                "2we45"
-            )
-        );
-    }
+//    public function test()
+//    {
+//        var_dump(
+//            $this->passwordHasher->hashPasswordWithSalt(
+//                "hello123",
+//                "sha512",
+//                false,
+//                "2we45"
+//            )
+//        );
+//    }
 
 }

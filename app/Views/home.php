@@ -6,6 +6,8 @@
       data-assets-path="<?= base_url() ?>/public/assets/" data-template="vertical-menu-template-bordered">
 <?= $this->include("widgets/head"); ?>
 <body>
+<link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendor/libs/toastr/toastr.css"/>
+<link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendor/libs/animate-css/animate.css"/>
 <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
@@ -25,7 +27,7 @@
                     <h4 class="mb-2">Welcome 👋</h4>
                     <p class="mb-4">Sign in to your account</p>
 
-                    <form id="formAuthentication" class="mb-3" action="" method="POST">
+                    <form id="" class="mb-3" method="post">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
@@ -53,9 +55,18 @@
                                 </label>
                             </div>
                         </div>
+                        <?php
+                            if (!empty(session()->getTempdata('login_error'))):
+                        ?>
+                        <div id="login_error" class="mb-3 alert alert-danger" role="alert">
+                            <?=session()->getTempdata('login_error')?>
+                        </div>
+                        <?php
+                            endif;
+                        ?>
                         <div class="mb-3">
-                            <button onclick="javascript:location.href='<?=base_url()?>/dashboard'"
-                                    class="btn btn-primary d-grid w-100" type="button">
+<!--                            onclick="javascript:location.href='--><?//=base_url()?><!--/dashboard'-->
+                            <button class="btn btn-primary d-grid w-100" type="submit">
                                 Sign in
                             </button>
                         </div>
@@ -88,19 +99,12 @@
 
 <!-- Page JS -->
 <script src="<?= base_url() ?>/public/assets/js/pages-auth.js"></script>
+<script src="<?= base_url() ?>/public/assets/vendor/libs/toastr/toastr.js"></script>
 <script>
     <?php
     if (!empty(session()->getTempdata('login_error'))):
     ?>
-    $.toast({
-        heading: 'Error',
-        text: "<?=session()->getTempdata('login_error')?>",
-        showHideTransition: 'fade',
-        icon: 'error',
-        color: '#ff2450',
-        position: "top-right",
-        hideAfter: 5000,
-    })
+        toastr.error("<?=session()->getTempdata('login_error')?>")
     <?php
     endif;
     ?>

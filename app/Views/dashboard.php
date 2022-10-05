@@ -720,6 +720,18 @@
 
 <!-- Page JS -->
 <script src="<?=base_url()?>/public/assets/js/dashboards-ecommerce.js"></script>
+
+<script src="<?= base_url() ?>/public/assets/vendor/libs/toastr/toastr.js"></script>
+
+<script>
+    <?php
+    if (!empty(session()->getTempdata('login_success'))):
+    ?>
+    toastr.success("Welcome <?=session()->getTempdata('login_success')?>")
+    <?php
+    endif;
+    ?>
+</script>
 </body>
 </html>
 <?= $this->endSection(); ?>

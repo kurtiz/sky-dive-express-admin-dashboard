@@ -38,6 +38,8 @@
     <!-- Page CSS -->
     <!-- Page -->
     <link rel="stylesheet" href="<?=base_url()?>/public/assets/vendor/css/pages/page-auth.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendor/libs/toastr/toastr.css"/>
+    <link rel="stylesheet" href="<?= base_url() ?>/public/assets/vendor/libs/animate-css/animate.css"/>
     <!-- Helpers -->
     <script src="<?=base_url()?>/public/assets/vendor/js/helpers.js"></script>
 
